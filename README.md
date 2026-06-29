@@ -1,94 +1,97 @@
- # Learnovo - منصة التعلم الإلكتروني
+Learnovo - E-Learning Platform
+An integrated educational platform built with React + Vite for the frontend and NestJS + MongoDB for the backend.
 
-منصة تعليمية متكاملة مكتوبة باستخدام **React + Vite** للواجهة الأمامية و**NestJS + MongoDB** للواجهة الخلفية.
-
-## بنية المشروع
-
-```
+Project Structure
+text
 educational/
 ├── learnovo/           # Backend - NestJS API
 │   ├── src/
 │   │   ├── modules/
-│   │   │   ├── auth/           # مصادقة المستخدمين
-│   │   │   ├── course/         # إدارة الدورات
-│   │   │   ├── users/          # إدارة المستخدمين
-│   │   │   ├── students/       # ملفات الطلاب
-│   │   │   ├── teacher-profile/  # ملفات المعلمين
-│   │   │   ├── teacher-assignment/ # إسناد المعلمين بالدورات
-│   │   │   ├── enrollments/    # طلبات التسجيل
-│   │   │   ├── grades/         # الدرجات
-│   │   │   ├── notifications/  # الإشعارات
-│   │   │   └── graduation/     # طلبات التخرج
+│   │   │   ├── auth/           # User authentication
+│   │   │   ├── course/         # Course management
+│   │   │   ├── users/          # User management
+│   │   │   ├── students/       # Student profiles
+│   │   │   ├── teacher-profile/  # Teacher profiles
+│   │   │   ├── teacher-assignment/ # Teacher-course assignments
+│   │   │   ├── enrollments/    # Enrollment requests
+│   │   │   ├── grades/         # Grades
+│   │   │   ├── notifications/  # Notifications
+│   │   │   └── graduation/     # Graduation requests
 │   ├── package.json
 │   └── ...
 └── project/            # Frontend - React + Vite
     ├── src/
     │   ├── pages/
-    │   │   ├── public/          # الصفحات العامة
-    │   │   ├── student/         # صفحات الطالب
-    │   │   ├── teacher/         # صفحات المعلم
-    │   │   └── admin/           # صفحات المدير
-    │   ├── components/          # مكونات الواجهة
+    │   │   ├── public/          # Public pages
+    │   │   ├── student/         # Student pages
+    │   │   ├── teacher/         # Teacher pages
+    │   │   └── admin/           # Admin pages
+    │   ├── components/          # UI components
     │   ├── hooks/               # React hooks
     │   ├── context/             # React context
     │   └── services/            # API services
     ├── package.json
     └── ...
-```
-
-## التشغيل
-
-### Backend (learnovo)
-```bash
+Running the Application
+Backend (learnovo)
+bash
 cd learnovo
 npm install
 npm run start:dev
-```
-
-### Frontend (project)
-```bash
+Frontend (project)
+bash
 cd project
 npm install
 npm run dev
-```
+API Endpoints
+Authentication
+POST /api/auth/login - User login
 
-## API Endpoints
+POST /api/auth/register - Create account
 
-### المصادقة
-- `POST /api/auth/login` - تسجيل الدخول
-- `POST /api/auth/register` - إنشاء حساب
-- `GET /api/auth/verify` - التحقق من التوكن
+GET /api/auth/verify - Verify token
 
-### الدورات
-- `GET /api/courses/available` - جلب الدورات المتاحة للتسجيل
-- `GET /api/courses/:id` - تفاصيل دورة
-- `GET /api/courses/teacher/:teacherId` - دورات المعلم
-- `GET /api/courses/student/:studentId` - دورات الطالب
-- `GET /api/courses/statistics` - إحصائيات الدورات
+Courses
+GET /api/courses/available - Get courses available for enrollment
 
-### التسجيل
-- `POST /api/enrollments` - طلب انضمام لدورة (يحتاج توكن JWT)
+GET /api/courses/:id - Course details
 
-### الإشعارات
-- `POST /api/notifications/clean` - تنظيف الإشعارات القديمة (مدير فقط)
+GET /api/courses/teacher/:teacherId - Teacher's courses
 
-## أدوار المستخدمين
+GET /api/courses/student/:studentId - Student's courses
 
-- **Admin** - إدارة النظام، إنشاء دورات، موافقة الطلبات
-- **Student** - عرض الدورات، طلب الانضمام، عرض الدرجات
-- **Teacher** - عرض الدورات المكلفة، إدخال الدرجات
+GET /api/courses/statistics - Course statistics
 
-## التقنيات المستخدمة
+Enrollment
+POST /api/enrollments - Request course enrollment (requires JWT token)
 
-### Backend
-- NestJS
-- MongoDB + TypeORM
-- JWT Authentication
-- Class Validator
+Notifications
+POST /api/notifications/clean - Clean old notifications (admin only)
 
-### Frontend
-- React 19
-- Vite
-- TailwindCSS
-- React Router DOM v7
-- Axios
+User Roles
+Admin - System management, course creation, approve requests
+
+Student - View courses, request enrollment, view grades
+
+Teacher - View assigned courses, enter grades
+
+Technologies Used
+Backend
+NestJS
+
+MongoDB + TypeORM
+
+JWT Authentication
+
+Class Validator
+
+Frontend
+React 19
+
+Vite
+
+TailwindCSS
+
+React Router DOM v7
+
+Axios
